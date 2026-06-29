@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Aurora House</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="auth-page admin-auth-page">
+    <section class="auth-section">
+        <div class="auth-card auth-card-admin">
+            <div class="admin-badge">Staff Only</div>
+            <h1>Admin Login</h1>
+            <p class="auth-subtitle">Orphanage head & staff dashboard — adoptions, donations, rescue reports, and more.</p>
+
+            <div id="authError" class="auth-error" style="display: none;"></div>
+
+            <form id="adminLoginForm" class="auth-form">
+                <div class="form-group">
+                    <label for="adminEmail">Admin Email</label>
+                    <input type="email" id="adminEmail" value="admin@aurorahouse.org" required>
+                </div>
+                <div class="form-group">
+                    <label for="adminPassword">Password</label>
+                    <input type="password" id="adminPassword" required placeholder="Admin password">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Sign In to Dashboard</button>
+            </form>
+
+            <p class="auth-footer-link"><a href="login.html">User login</a> · <a href="index.html">Public site</a></p>
+        </div>
+    </section>
+
+    <script src="auth.js"></script>
+    <script>
+        if (AuroraData.getAdminSession()) window.location.href = 'admin.html';
+
+        document.getElementById('adminLoginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const res = AuroraData.loginAdmin(
+                document.getElementById('adminEmail').value.trim(),
+                document.getElementById('adminPassword').value
+            );
+            const err = document.getElementById('authError');
+            if (res.ok) {
+                window.location.href = 'admin.html';
+            } else {
+                err.textContent = res.message;
+                err.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

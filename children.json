@@ -1,0 +1,50 @@
+[
+  {
+    "id": "1",
+    "name": "Emma",
+    "age": 5,
+    "gender": "Female",
+    "status": "available",
+    "image": "https://images.unsplash.com/photo-1503454537845-cef01fcb6237?w=500&h=500&fit=crop&q=80",
+    "availableSince": "2023",
+    "description": "Sweet and energetic, loves art and outdoor activities.",
+    "needs": "Loving Home",
+    "personality": "Emma loves art and outdoor play.",
+    "interests": ["Art", "Music"],
+    "healthStatus": "Good",
+    "healthReports": [],
+    "videos": []
+  },
+  {
+    "id": "2",
+    "name": "James",
+    "age": 8,
+    "gender": "Male",
+    "status": "available",
+    "image": "https://images.unsplash.com/photo-1503919502593-69336414efae?w=500&h=500&fit=crop&q=80",
+    "availableSince": "2022",
+    "description": "Bright and curious, enjoys reading and science.",
+    "needs": "Supportive Family",
+    "personality": "James loves science and reading.",
+    "interests": ["Reading", "Science"],
+    "healthStatus": "Good",
+    "healthReports": [],
+    "videos": []
+  },
+  {
+    "id": "3",
+    "name": "Sophia",
+    "age": 6,
+    "gender": "Female",
+    "status": "available",
+    "image": "https://images.unsplash.com/photo-1544776193-352d792451e9?w=500&h=500&fit=crop&q=80",
+    "availableSince": "2023",
+    "description": "Creative and musical, loves singing and dancing.",
+    "needs": "Creative Environment",
+    "personality": "Sophia loves music and dance.",
+    "interests": ["Music", "Dancing"],
+    "healthStatus": "Good",
+    "healthReports": [],
+    "videos": []
+  }
+]

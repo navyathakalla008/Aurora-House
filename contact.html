@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Aurora House</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <span class="logo-icon">🌟</span>
+                    <span class="logo-text">Aurora House</span>
+                </div>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="programs.html">Programs</a></li>
+                    <li><a href="adoption.html">Adoption</a></li>
+                    <li><a href="rescue.html">Rescue</a></li>
+                    <li><a href="donate.html">Donate</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                    <li data-nav-login><a href="login.html">Login</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Contact Us</h1>
+            <p>We'd love to hear from you. Get in touch with us today!</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h2>Get in Touch</h2>
+                    <p>Whether you want to volunteer, make a donation, sponsor a child, or simply learn more about Aurora House, we're here to help.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">📍</div>
+                            <div>
+                                <h3>Address</h3>
+                                <p>123 Hope Street<br>City, State 12345<br>United States</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">📞</div>
+                            <div>
+                                <h3>Phone</h3>
+                                <p>Main: (555) 123-4567<br>Emergency: (555) 123-HELP</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">✉️</div>
+                            <div>
+                                <h3>Email</h3>
+                                <p>General: info@aurorahouse.org<br>Donations: donate@aurorahouse.org<br>Volunteer: volunteer@aurorahouse.org</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">🕒</div>
+                            <div>
+                                <h3>Office Hours</h3>
+                                <p>Monday - Friday: 9:00 AM - 5:00 PM<br>Saturday: 10:00 AM - 2:00 PM<br>Sunday: Closed</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="social-section">
+                        <h3>Follow Us</h3>
+                        <div class="social-links">
+                            <a href="#" aria-label="Facebook">📘 Facebook</a>
+                            <a href="#" aria-label="Twitter">🐦 Twitter</a>
+                            <a href="#" aria-label="Instagram">📷 Instagram</a>
+                            <a href="#" aria-label="LinkedIn">💼 LinkedIn</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-container">
+                    <div class="contact-form-card">
+                        <h2>Send Us a Message</h2>
+                        <form id="contactForm" class="contact-form">
+                            <div class="form-group">
+                                <label for="contactName">Full Name *</label>
+                                <input type="text" id="contactName" name="name" required>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="contactEmail">Email Address *</label>
+                                    <input type="email" id="contactEmail" name="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contactPhone">Phone Number</label>
+                                    <input type="tel" id="contactPhone" name="phone">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="contactSubject">Subject *</label>
+                                <select id="contactSubject" name="subject" required>
+                                    <option value="">Select a subject</option>
+                                    <option value="volunteer">Volunteer Opportunities</option>
+                                    <option value="donation">Donation Inquiry</option>
+                                    <option value="sponsor">Child Sponsorship</option>
+                                    <option value="visit">Schedule a Visit</option>
+                                    <option value="partnership">Partnership/Corporate</option>
+                                    <option value="general">General Inquiry</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="contactMessage">Message *</label>
+                                <textarea id="contactMessage" name="message" rows="6" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>
+                                    <input type="checkbox" name="newsletter" id="contactNewsletter">
+                                    Subscribe to our newsletter for updates and stories
+                                </label>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-large btn-block">Send Message</button>
+                        </form>
+                        <div id="contactSuccess" class="contact-success" style="display: none;">
+                            <div class="success-icon">✓</div>
+                            <h3>Message Sent!</h3>
+                            <p>Thank you for contacting us. We'll get back to you within 24-48 hours.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <h2>Visit Us</h2>
+            <div class="map-placeholder">
+                <p>📍 Map Location</p>
+                <p>123 Hope Street, City, State 12345</p>
+                <p class="map-note">(Interactive map can be integrated here with Google Maps or similar service)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p class="section-subtitle">Quick answers to common questions</p>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How can I volunteer at Aurora House?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We welcome volunteers! You can fill out our contact form selecting "Volunteer Opportunities" or email us at volunteer@aurorahouse.org. We offer various volunteer roles including tutoring, mentoring, event support, and administrative assistance.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Can I visit Aurora House?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! We welcome visitors by appointment. Please contact us to schedule a visit. We conduct tours on weekdays and some Saturdays. All visitors must complete a background check for the safety of our children.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How do I sponsor a child?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Child sponsorship is a wonderful way to make a direct impact. Contact us through our form or email donate@aurorahouse.org. We'll match you with a child and provide regular updates on their progress.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Are donations tax-deductible?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! Aurora House is a registered 501(c)(3) nonprofit organization. All donations are tax-deductible to the extent allowed by law. You'll receive a receipt for your records.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What items can I donate in-kind?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We accept new or gently used items including clothing, books, toys, school supplies, sports equipment, and non-perishable food. Please contact us before dropping off items to ensure we can accept them.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <span class="logo-icon">🌟</span>
+                        <span class="logo-text">Aurora House</span>
+                    </div>
+                    <p>Illuminating lives and creating bright futures for children in need. Together, we can make a difference.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">📘</a>
+                        <a href="#" aria-label="Twitter">🐦</a>
+                        <a href="#" aria-label="Instagram">📷</a>
+                        <a href="#" aria-label="LinkedIn">💼</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="programs.html">Programs</a></li>
+                        <li><a href="adoption.html">Adoption</a></li>
+                        <li><a href="rescue.html">Rescue</a></li>
+                        <li><a href="donate.html">Donate</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Get Involved</h4>
+                    <ul>
+                        <li><a href="rescue.html">Report a Child</a></li>
+                        <li><a href="adoption.html">Adopt a Child</a></li>
+                        <li><a href="donate.html">Make a Donation</a></li>
+                        <li><a href="contact.html">Volunteer</a></li>
+                        <li><a href="contact.html">Sponsor a Child</a></li>
+                        <li><a href="contact.html">Organize Fundraiser</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Info</h4>
+                    <ul class="contact-info">
+                        <li>📍 123 Hope Street, City, State 12345</li>
+                        <li>📞 (555) 123-4567</li>
+                        <li>✉️ info@aurorahouse.org</li>
+                        <li>🕒 Mon-Fri: 9AM - 5PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Aurora House. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="auth.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
+

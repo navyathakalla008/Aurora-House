@@ -1,0 +1,26 @@
+[
+  {
+    "id": "demo-user",
+    "name": "Demo User",
+    "email": "user@aurorahouse.org",
+    "password": "AuroraUser2024"
+  },
+  {
+    "id": "1779520072669",
+    "name": "Test User",
+    "email": "test@example.com",
+    "password": "test123"
+  },
+  {
+    "id": "1779520857979",
+    "name": "Brandnew",
+    "email": "brandnew@test.com",
+    "password": "secret99"
+  },
+  {
+    "id": "1779521277080",
+    "name": "Navya",
+    "email": "navya@gmail.com",
+    "password": "navya123"
+  }
+]

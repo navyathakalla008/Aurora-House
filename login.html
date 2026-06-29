@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Login - Aurora House</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="auth-page">
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="index.html" class="logo-link">
+                    <div class="logo"><span class="logo-icon">🌟</span><span class="logo-text">Aurora House</span></div>
+                </a>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="adoption.html">Adoption</a></li>
+                    <li><a href="donate.html">Donate</a></li>
+                    <li><a href="rescue.html">Rescue</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="auth-section">
+        <div class="auth-card">
+            <h1>Welcome Back</h1>
+            <p class="auth-subtitle">Enter your email and password to sign in. New here? We create your account automatically.</p>
+
+            <div class="auth-tabs">
+                <button type="button" class="auth-tab active" data-tab="login">Login</button>
+                <button type="button" class="auth-tab" data-tab="register">Create Account</button>
+            </div>
+
+            <div id="authError" class="auth-error" style="display: none;"></div>
+
+            <form id="userLoginForm" class="auth-form">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" required placeholder="you@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" required placeholder="Your password">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+            </form>
+
+            <form id="userRegisterForm" class="auth-form" style="display: none;">
+                <div class="form-group">
+                    <label for="regName">Full Name</label>
+                    <input type="text" id="regName" required placeholder="Your name">
+                </div>
+                <div class="form-group">
+                    <label for="regEmail">Email</label>
+                    <input type="email" id="regEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="regPassword">Password</label>
+                    <input type="password" id="regPassword" required minlength="6" placeholder="Min. 6 characters">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+            </form>
+
+            <p class="auth-footer-link" id="loggedInLogout" style="display: none;">
+                <a href="logout.html">Logout</a>
+            </p>
+            <p class="auth-footer-link">
+                Orphanage staff? <a href="admin-login.html">Admin login</a>
+            </p>
+            <p class="auth-footer-link"><a href="index.html">← Back to website</a></p>
+        </div>
+    </section>
+
+    <script src="auth.js"></script>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        let redirect = params.get('redirect') || 'index.html';
+        const child = params.get('child');
+        if (child && redirect.includes('adoption')) {
+            redirect += (redirect.includes('?') ? '&' : '?') + 'child=' + encodeURIComponent(child);
+        }
+
+        if (AuroraData.getUserSession()) {
+            const lo = document.getElementById('loggedInLogout');
+            if (lo) lo.style.display = 'block';
+            if (!params.get('stay')) window.location.href = redirect;
+        }
+
+        document.querySelectorAll('.auth-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                const isLogin = tab.dataset.tab === 'login';
+                document.getElementById('userLoginForm').style.display = isLogin ? 'block' : 'none';
+                document.getElementById('userRegisterForm').style.display = isLogin ? 'none' : 'block';
+                document.getElementById('authError').style.display = 'none';
+            });
+        });
+
+        function showError(msg) {
+            const el = document.getElementById('authError');
+            el.textContent = msg;
+            el.style.display = 'block';
+        }
+
+        document.getElementById('userLoginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const res = await AuroraData.loginUser(
+                document.getElementById('loginEmail').value.trim(),
+                document.getElementById('loginPassword').value
+            );
+            if (res.ok) window.location.href = redirect;
+            else showError(res.message);
+        });
+
+        document.getElementById('userRegisterForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const res = await AuroraData.registerUser(
+                document.getElementById('regName').value.trim(),
+                document.getElementById('regEmail').value.trim(),
+                document.getElementById('regPassword').value
+            );
+            if (res.ok) window.location.href = redirect;
+            else showError(res.message);
+        });
+    </script>
+</body>
+</html>

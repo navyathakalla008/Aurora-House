@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adoption - Aurora House</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <span class="logo-icon">🌟</span>
+                    <span class="logo-text">Aurora House</span>
+                </div>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="programs.html">Programs</a></li>
+                    <li><a href="adoption.html" class="active">Adoption</a></li>
+                    <li><a href="rescue.html">Rescue</a></li>
+                    <li><a href="donate.html">Donate</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li data-nav-login><a href="login.html">Login</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Adoption Program</h1>
+            <p>Find your forever family and give a child a loving home</p>
+        </div>
+    </section>
+
+    <!-- Adoption Process -->
+    <section class="adoption-process">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Adoption Process</h2>
+                <p class="section-subtitle">A step-by-step guide to welcoming a child into your family</p>
+            </div>
+            <div class="process-timeline">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Initial Inquiry</h3>
+                        <p>Submit an adoption inquiry form and attend an information session to learn about our adoption process and requirements.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Application & Documentation</h3>
+                        <p>Complete the adoption application and submit required documents including background checks, financial statements, and references.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Home Study</h3>
+                        <p>Our social workers will conduct a comprehensive home study to ensure your home is safe and suitable for a child.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Matching & Meeting</h3>
+                        <p>We'll match you with a child based on compatibility. You'll receive detailed information including health reports and videos before meeting.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>Pre-Adoption Visits</h3>
+                        <p>Gradual introduction through supervised visits to help both you and the child adjust to the new family dynamic.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">6</div>
+                    <div class="step-content">
+                        <h3>Placement & Support</h3>
+                        <p>Final placement with ongoing support, counseling, and resources to ensure a successful transition for everyone.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Children Available for Adoption -->
+    <section class="children-gallery">
+        <div class="container">
+            <div class="section-header">
+                <h2>Children Waiting for a Family</h2>
+                <p class="section-subtitle">Each child has a unique story and is waiting for their forever home</p>
+            </div>
+            <div class="children-grid" id="childrenGrid"></div>
+            <p id="childrenEmpty" class="children-empty" style="display: none;">No profiles available at this time. Please check back soon.</p>
+        </div>
+    </section>
+
+    <!-- Child Profile Modal -->
+    <div id="childModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="modalBody">
+                <!-- Content will be loaded dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Adoption inquiry (user details only — opened from profile) -->
+    <div id="adoptionInquiryModal" class="modal">
+        <div class="modal-content modal-content-form">
+            <span class="close-modal" id="closeAdoptionInquiry">&times;</span>
+            <div class="child-form-modal-body adoption-inquiry-body">
+                <h2 id="adoptionInquiryTitle">Adoption Inquiry</h2>
+                <p class="adoption-protected-note">🔒 Child health, location, and identity details remain protected. Share only your information below so our team can contact you safely.</p>
+                <div id="adoptionInquiryLogin" class="adoption-login-banner" style="display: none;">
+                    <p>Please <a href="login.html?redirect=adoption.html"><strong>sign in</strong></a> to submit your inquiry.</p>
+                </div>
+                <form id="adoptionInquiryForm" class="adoption-form">
+                    <input type="hidden" id="inquiryChildId" name="childId">
+                    <input type="hidden" id="inquiryChildName" name="childName">
+                    <div class="form-group">
+                        <label>Applying to adopt</label>
+                        <input type="text" id="inquiryChildDisplay" readonly class="readonly-field">
+                    </div>
+                    <h3>Your Details</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="inquiryFirstName">First Name *</label>
+                            <input type="text" id="inquiryFirstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="inquiryLastName">Last Name *</label>
+                            <input type="text" id="inquiryLastName" name="lastName" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="inquiryEmail">Email *</label>
+                            <input type="email" id="inquiryEmail" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="inquiryPhone">Phone *</label>
+                            <input type="tel" id="inquiryPhone" name="phone" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inquiryAddress">Home Address *</label>
+                        <input type="text" id="inquiryAddress" name="address" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="inquiryCity">City *</label>
+                            <input type="text" id="inquiryCity" name="city" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="inquiryState">State *</label>
+                            <input type="text" id="inquiryState" name="state" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="inquiryZip">ZIP *</label>
+                            <input type="text" id="inquiryZip" name="zip" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="inquiryAge">Your Age *</label>
+                            <input type="number" id="inquiryAge" name="age" min="21" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="inquiryMarital">Marital Status *</label>
+                            <select id="inquiryMarital" name="maritalStatus" required>
+                                <option value="">Select</option>
+                                <option value="single">Single</option>
+                                <option value="married">Married</option>
+                                <option value="divorced">Divorced</option>
+                                <option value="widowed">Widowed</option>
+                                <option value="partnered">Domestic Partnership</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inquiryMotivation">Why do you want to adopt this child? *</label>
+                        <textarea id="inquiryMotivation" name="motivation" rows="4" required placeholder="Tell us about your home, family, and readiness to provide a safe, loving environment"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="inquiryConsent" name="consent" required>
+                            I agree to a background check and understand the child's protected information is shared only through Aurora House *
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-large btn-block">Submit Adoption Inquiry</button>
+                </form>
+                <div id="adoptionInquirySuccess" class="adoption-success" style="display: none;">
+                    <div class="success-icon">✓</div>
+                    <h3>Inquiry Submitted</h3>
+                    <p>Your inquiry was saved. The orphanage admin will see it under <strong>Adoptions</strong> on the dashboard.</p>
+                    <p>We will contact you within 3–5 business days.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Adoption Requirements -->
+    <section class="adoption-requirements">
+        <div class="container">
+            <div class="section-header">
+                <h2>Adoption Requirements</h2>
+                <p class="section-subtitle">What you need to know before starting the adoption process</p>
+            </div>
+            <div class="requirements-grid">
+                <div class="requirement-card">
+                    <div class="req-icon">✅</div>
+                    <h3>Age Requirements</h3>
+                    <p>Adoptive parents must be at least 21 years old. There is no maximum age limit, but health and ability to care for a child are considered.</p>
+                </div>
+                <div class="requirement-card">
+                    <div class="req-icon">🏠</div>
+                    <h3>Stable Home</h3>
+                    <p>A safe, stable living environment with adequate space for a child. Home study will assess safety and suitability.</p>
+                </div>
+                <div class="requirement-card">
+                    <div class="req-icon">💰</div>
+                    <h3>Financial Stability</h3>
+                    <p>Proof of financial stability to provide for a child's needs. Income requirements vary based on family size.</p>
+                </div>
+                <div class="requirement-card">
+                    <div class="req-icon">❤️</div>
+                    <h3>Commitment</h3>
+                    <p>Demonstrated commitment to providing a loving, permanent home. Willingness to participate in training and support programs.</p>
+                </div>
+                <div class="requirement-card">
+                    <div class="req-icon">🔍</div>
+                    <h3>Background Check</h3>
+                    <p>Complete background check including criminal history, child abuse registry, and reference checks.</p>
+                </div>
+                <div class="requirement-card">
+                    <div class="req-icon">📚</div>
+                    <h3>Training</h3>
+                    <p>Completion of pre-adoption training covering child development, trauma-informed care, and adoption-specific topics.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Full form hidden — use View Profile → Start Adoption Process -->
+    <section class="adoption-form-section" id="adoption-form-section" style="display: none;" aria-hidden="true">
+        <div class="container">
+            <div class="adoption-form-wrapper">
+                <div class="form-intro">
+                    <h2>Start Your Adoption Journey</h2>
+                    <p>Fill out the form below to begin the adoption process. Our team will review your inquiry and contact you within 3-5 business days.</p>
+                    <div class="form-benefits">
+                        <h3>What You'll Receive:</h3>
+                        <ul>
+                            <li>✓ Detailed child profiles with photos and videos</li>
+                            <li>✓ Complete health reports and medical history</li>
+                            <li>✓ Educational and developmental assessments</li>
+                            <li>✓ Personal information and background details</li>
+                            <li>✓ Support throughout the entire process</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="adoption-form-container">
+                    <div id="adoptionLoginBanner" class="adoption-login-banner" style="display: none;">
+                        <p>Please <a href="login.html?redirect=adoption.html"><strong>sign in</strong></a> to submit an adoption inquiry. New here? Create a free account on the login page.</p>
+                    </div>
+                    <form id="adoptionForm" class="adoption-form">
+                        <h3>Personal Information</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="adoptFirstName">First Name *</label>
+                                <input type="text" id="adoptFirstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="adoptLastName">Last Name *</label>
+                                <input type="text" id="adoptLastName" name="lastName" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="adoptEmail">Email Address *</label>
+                                <input type="email" id="adoptEmail" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="adoptPhone">Phone Number *</label>
+                                <input type="tel" id="adoptPhone" name="phone" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="adoptAddress">Address *</label>
+                            <input type="text" id="adoptAddress" name="address" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="adoptCity">City *</label>
+                                <input type="text" id="adoptCity" name="city" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="adoptState">State *</label>
+                                <input type="text" id="adoptState" name="state" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="adoptZip">ZIP Code *</label>
+                                <input type="text" id="adoptZip" name="zip" required>
+                            </div>
+                        </div>
+
+                        <h3>Family Information</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="adoptAge">Your Age *</label>
+                                <input type="number" id="adoptAge" name="age" min="21" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="adoptMaritalStatus">Marital Status *</label>
+                                <select id="adoptMaritalStatus" name="maritalStatus" required>
+                                    <option value="">Select</option>
+                                    <option value="single">Single</option>
+                                    <option value="married">Married</option>
+                                    <option value="divorced">Divorced</option>
+                                    <option value="widowed">Widowed</option>
+                                    <option value="partnered">Domestic Partnership</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="adoptChildren">Do you have other children?</label>
+                            <select id="adoptChildren" name="hasChildren">
+                                <option value="no">No</option>
+                                <option value="yes">Yes</option>
+                            </select>
+                        </div>
+                        <div class="form-group" id="childrenDetails" style="display: none;">
+                            <label for="adoptChildrenCount">Number of children and ages</label>
+                            <input type="text" id="adoptChildrenCount" name="childrenDetails" placeholder="e.g., 2 children, ages 5 and 8">
+                        </div>
+                        <div class="form-group">
+                            <label for="adoptEmployment">Employment Status *</label>
+                            <select id="adoptEmployment" name="employment" required>
+                                <option value="">Select</option>
+                                <option value="employed">Employed Full-Time</option>
+                                <option value="part-time">Employed Part-Time</option>
+                                <option value="self-employed">Self-Employed</option>
+                                <option value="retired">Retired</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <h3>Adoption Preferences</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="adoptAgeRange">Preferred Age Range</label>
+                                <select id="adoptAgeRange" name="ageRange">
+                                    <option value="any">Any Age</option>
+                                    <option value="0-2">0-2 years</option>
+                                    <option value="3-5">3-5 years</option>
+                                    <option value="6-8">6-8 years</option>
+                                    <option value="9-12">9-12 years</option>
+                                    <option value="13+">13+ years</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="adoptGender">Preferred Gender</label>
+                                <select id="adoptGender" name="gender">
+                                    <option value="any">Any</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="adoptSpecialNeeds">Open to children with special needs?</label>
+                            <select id="adoptSpecialNeeds" name="specialNeeds">
+                                <option value="yes">Yes, open to special needs</option>
+                                <option value="maybe">Maybe, depending on needs</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+
+                        <h3>Additional Information</h3>
+                        <div class="form-group">
+                            <label for="adoptExperience">Previous adoption or foster care experience?</label>
+                            <textarea id="adoptExperience" name="experience" rows="3" placeholder="Please describe any previous experience with adoption or foster care"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="adoptMotivation">What motivates you to adopt? *</label>
+                            <textarea id="adoptMotivation" name="motivation" rows="4" required placeholder="Please share what motivates you to adopt and what you can offer a child"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="adoptQuestions">Questions or additional information</label>
+                            <textarea id="adoptQuestions" name="questions" rows="3" placeholder="Any questions or additional information you'd like to share"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                <input type="checkbox" name="consent" id="adoptConsent" required>
+                                I understand that this is an initial inquiry and I agree to the background check process *
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                <input type="checkbox" name="newsletter" id="adoptNewsletter">
+                                Subscribe to adoption updates and information
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-large btn-block">Submit Adoption Inquiry</button>
+                        <p class="form-note">🔒 Your information is confidential and secure. We'll contact you within 3-5 business days.</p>
+                    </form>
+                    <div id="adoptionSuccess" class="adoption-success" style="display: none;">
+                        <div class="success-icon">✓</div>
+                        <h3>Thank You!</h3>
+                        <p>Your adoption inquiry has been received. Our team will review your application and contact you within 3-5 business days.</p>
+                        <p>You'll receive an email confirmation shortly with next steps.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support & Resources -->
+    <section class="adoption-support">
+        <div class="container">
+            <div class="section-header">
+                <h2>Post-Adoption Support</h2>
+                <p class="section-subtitle">We're here for you and your family every step of the way</p>
+            </div>
+            <div class="support-grid">
+                <div class="support-card">
+                    <div class="support-icon">👨‍👩‍👧‍👦</div>
+                    <h3>Family Counseling</h3>
+                    <p>Ongoing counseling and support services to help your family adjust and thrive together.</p>
+                </div>
+                <div class="support-card">
+                    <div class="support-icon">👥</div>
+                    <h3>Support Groups</h3>
+                    <p>Connect with other adoptive families through our monthly support group meetings.</p>
+                </div>
+                <div class="support-card">
+                    <div class="support-icon">📚</div>
+                    <h3>Resources & Training</h3>
+                    <p>Access to educational resources, workshops, and training on adoption-related topics.</p>
+                </div>
+                <div class="support-card">
+                    <div class="support-icon">🏥</div>
+                    <h3>Medical Support</h3>
+                    <p>Assistance connecting with healthcare providers and accessing medical resources.</p>
+                </div>
+                <div class="support-card">
+                    <div class="support-icon">🎓</div>
+                    <h3>Educational Support</h3>
+                    <p>Help with school enrollment, educational assessments, and learning support.</p>
+                </div>
+                <div class="support-card">
+                    <div class="support-icon">📞</div>
+                    <h3>24/7 Helpline</h3>
+                    <p>Round-the-clock support line for urgent questions or concerns after adoption.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <span class="logo-icon">🌟</span>
+                        <span class="logo-text">Aurora House</span>
+                    </div>
+                    <p>Illuminating lives and creating bright futures for children in need. Together, we can make a difference.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">📘</a>
+                        <a href="#" aria-label="Twitter">🐦</a>
+                        <a href="#" aria-label="Instagram">📷</a>
+                        <a href="#" aria-label="LinkedIn">💼</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="programs.html">Programs</a></li>
+                        <li><a href="adoption.html">Adoption</a></li>
+                        <li><a href="rescue.html">Rescue</a></li>
+                        <li><a href="donate.html">Donate</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Get Involved</h4>
+                    <ul>
+                        <li><a href="rescue.html">Report a Child</a></li>
+                        <li><a href="adoption.html">Adopt a Child</a></li>
+                        <li><a href="donate.html">Make a Donation</a></li>
+                        <li><a href="contact.html">Volunteer</a></li>
+                        <li><a href="contact.html">Sponsor a Child</a></li>
+                        <li><a href="contact.html">Organize Fundraiser</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Info</h4>
+                    <ul class="contact-info">
+                        <li>📍 123 Hope Street, City, State 12345</li>
+                        <li>📞 (555) 123-4567</li>
+                        <li>✉️ info@aurorahouse.org</li>
+                        <li>🕒 Mon-Fri: 9AM - 5PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Aurora House. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="auth.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+

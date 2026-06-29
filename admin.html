@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Aurora House</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="admin-page">
+    <div class="admin-layout">
+        <aside class="admin-sidebar">
+            <div class="logo"><span class="logo-icon">🌟</span><span class="logo-text">Aurora Admin</span></div>
+            <ul class="admin-nav" id="adminNav">
+                <li><a href="#" data-panel="overview" class="active">Overview <span class="admin-badge-count" id="badgeAll">0</span></a></li>
+                <li><a href="#" data-panel="adoptions">Adoptions <span class="admin-badge-count" id="badgeAdoption">0</span></a></li>
+                <li><a href="#" data-panel="donations">Donations <span class="admin-badge-count" id="badgeDonation">0</span></a></li>
+                <li><a href="#" data-panel="rescues">Rescue Reports <span class="admin-badge-count" id="badgeRescue">0</span></a></li>
+                <li><a href="#" data-panel="contacts">Contacts <span class="admin-badge-count" id="badgeContact">0</span></a></li>
+                <li><a href="#" data-panel="children">Child Profiles</a></li>
+            </ul>
+            <div style="padding: 1rem 1.5rem; margin-top: 2rem;">
+                <a href="index.html" class="btn btn-secondary btn-block" style="margin-bottom: 0.5rem;">View Website</a>
+                <button type="button" class="btn btn-primary btn-block" id="adminLogout">Logout</button>
+            </div>
+        </aside>
+
+        <main class="admin-main">
+            <div class="admin-topbar">
+                <h1 id="panelTitle">Dashboard Overview</h1>
+                <span id="adminWelcome">Orphanage Head</span>
+            </div>
+            <div id="serverWarning" class="admin-server-warning" style="display: none;">
+                <strong>Server not running.</strong> Double-click <code>start-server.bat</code>, then refresh this page so adoption inquiries are saved.
+            </div>
+
+            <section id="panel-overview" class="admin-panel active">
+                <div class="admin-stats" id="overviewStats"></div>
+                <h2>Recent Notifications</h2>
+                <div class="notification-list" id="overviewNotifications"></div>
+                <div id="overviewDetail" class="detail-drawer"></div>
+            </section>
+
+            <section id="panel-adoptions" class="admin-panel">
+                <p>New adoption inquiries from families willing to adopt appear here.</p>
+                <div class="admin-steps-help">
+                    <strong>Workflow:</strong> 1) Click <em>Accept</em> and enter meeting date, time &amp; day → 2) After the visit, click <em>Mark as Adopted</em> (child shows as Adopted on the public site).
+                </div>
+                <button type="button" class="btn btn-secondary" id="refreshAdoptionsBtn" style="margin-bottom: 1rem;">Refresh list</button>
+                <div class="notification-list" id="listAdoptions"></div>
+                <div id="detailAdoptions" class="detail-drawer"></div>
+            </section>
+
+            <section id="panel-donations" class="admin-panel">
+                <p>Monetary donations and in-kind gifts (food, clothes, supplies).</p>
+                <div class="notification-list" id="listDonations"></div>
+                <div id="detailDonations" class="detail-drawer"></div>
+            </section>
+
+            <section id="panel-rescues" class="admin-panel">
+                <p>Community rescue reports with child photos and safety details.</p>
+                <div class="notification-list" id="listRescues"></div>
+                <div id="detailRescues" class="detail-drawer"></div>
+            </section>
+
+            <section id="panel-contacts" class="admin-panel">
+                <p>Volunteer, visit, sponsorship, and general contact messages.</p>
+                <div class="notification-list" id="listContacts"></div>
+                <div id="detailContacts" class="detail-drawer"></div>
+            </section>
+
+            <section id="panel-children" class="admin-panel">
+                <h2>Manage Child Profiles</h2>
+                <p>Add and update profiles shown on the public adoption page.</p>
+                <div class="admin-child-form">
+                    <h3 id="adminChildFormTitle">Add Child Profile</h3>
+                    <form id="adminChildForm">
+                        <input type="hidden" id="adminChildId" value="">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Name *</label>
+                                <input type="text" id="adminChildName" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Age *</label>
+                                <input type="number" id="adminChildAge" min="0" max="18" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Gender</label>
+                                <select id="adminChildGender">
+                                    <option value="Female">Female</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Status</label>
+                                <select id="adminChildStatus">
+                                    <option value="available">Available</option>
+                                    <option value="adopted">Adopted</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Photo</label>
+                            <input type="file" id="adminChildPhoto" accept="image/*">
+                            <div id="adminChildPhotoPreview" class="image-upload-preview"></div>
+                        </div>
+                        <div class="form-group">
+                            <label>Description *</label>
+                            <textarea id="adminChildDesc" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save Profile</button>
+                        <button type="button" class="btn btn-secondary" id="adminChildCancel">Cancel Edit</button>
+                    </form>
+                </div>
+                <div class="admin-children-grid" id="adminChildrenList"></div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Accept + schedule meeting (opens when you click Accept) -->
+    <div id="acceptScheduleModal" class="modal">
+        <div class="modal-content modal-content-form accept-modal-box">
+            <span class="close-modal" id="closeAcceptModal">&times;</span>
+            <h2>Accept application</h2>
+            <p id="acceptModalSubtitle" class="accept-modal-subtitle"></p>
+            <p class="form-hint">Enter when the family will meet the child. This accepts the application and schedules the visit.</p>
+            <form id="acceptScheduleForm">
+                <input type="hidden" id="acceptSubmissionId" value="">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="acceptMeetingDate">Meeting date *</label>
+                        <input type="date" id="acceptMeetingDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="acceptMeetingTime">Meeting time *</label>
+                        <input type="time" id="acceptMeetingTime" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="acceptMeetingDay">Day *</label>
+                    <input type="text" id="acceptMeetingDay" placeholder="e.g. Saturday" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Accept &amp; Schedule Meeting</button>
+                <button type="button" class="btn btn-secondary btn-block" id="cancelAcceptModal">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>

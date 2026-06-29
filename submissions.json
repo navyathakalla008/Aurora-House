@@ -1,0 +1,28 @@
+[
+  {
+    "id": "test1",
+    "type": "adoption",
+    "data": {
+      "childId": "1",
+      "childName": "Emma",
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "j@test.com",
+      "phone": "555",
+      "address": "1 St",
+      "city": "City",
+      "state": "ST",
+      "zip": "12345",
+      "age": "30",
+      "maritalStatus": "married",
+      "motivation": "Want to adopt"
+    },
+    "createdAt": "2026-05-22T12:00:00.000Z",
+    "read": false,
+    "userName": "John",
+    "adminStatus": "pending",
+    "meetingDate": null,
+    "meetingTime": null,
+    "meetingDay": null
+  }
+]

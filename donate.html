@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate - Aurora House</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <span class="logo-icon">🌟</span>
+                    <span class="logo-text">Aurora House</span>
+                </div>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="programs.html">Programs</a></li>
+                    <li><a href="adoption.html">Adoption</a></li>
+                    <li><a href="rescue.html">Rescue</a></li>
+                    <li><a href="donate.html" class="active">Donate</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li data-nav-login><a href="login.html">Login</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Make a Donation</h1>
+            <p>Your generosity transforms lives and creates brighter futures</p>
+        </div>
+    </section>
+
+    <!-- Donation Section -->
+    <section class="donate-section">
+        <div class="container">
+            <div class="donate-wrapper">
+                <div class="donate-info">
+                    <h2>Why Your Donation Matters</h2>
+                    <p>Every contribution, no matter the size, directly impacts the lives of children at Aurora House. Your donation helps us provide:</p>
+                    <ul class="donation-benefits">
+                        <li>🏠 Safe and comfortable housing</li>
+                        <li>🍽️ Nutritious meals and snacks</li>
+                        <li>📚 Educational resources and supplies</li>
+                        <li>🏥 Healthcare and medical services</li>
+                        <li>👕 Clothing and personal care items</li>
+                        <li>🎨 Arts, sports, and recreational activities</li>
+                        <li>💼 Career guidance and life skills training</li>
+                    </ul>
+                    <div class="donation-impact">
+                        <h3>Your Impact</h3>
+                        <div class="impact-grid">
+                            <div class="impact-item">
+                                <strong>$25</strong>
+                                <p>Provides school supplies for one child</p>
+                            </div>
+                            <div class="impact-item">
+                                <strong>$50</strong>
+                                <p>Feeds a child for one week</p>
+                            </div>
+                            <div class="impact-item">
+                                <strong>$100</strong>
+                                <p>Covers medical checkup and care</p>
+                            </div>
+                            <div class="impact-item">
+                                <strong>$500</strong>
+                                <p>Sponsors a child's education for a month</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="donate-form-container">
+                    <div class="donate-form-card">
+                        <h2>Donate Now</h2>
+                        <form id="donationForm" class="donation-form">
+                            <div class="form-group">
+                                <label for="donationAmount">Donation Amount</label>
+                                <div class="amount-options">
+                                    <button type="button" class="amount-btn" data-amount="25">$25</button>
+                                    <button type="button" class="amount-btn" data-amount="50">$50</button>
+                                    <button type="button" class="amount-btn" data-amount="100">$100</button>
+                                    <button type="button" class="amount-btn" data-amount="250">$250</button>
+                                    <button type="button" class="amount-btn" data-amount="500">$500</button>
+                                </div>
+                                <input type="number" id="donationAmount" name="amount" placeholder="Enter custom amount" min="1" step="0.01" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="donationType">Donation Type</label>
+                                <select id="donationType" name="type" required>
+                                    <option value="">Select type</option>
+                                    <option value="one-time">One-time Donation</option>
+                                    <option value="monthly">Monthly Recurring</option>
+                                    <option value="yearly">Yearly Recurring</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="designation">Designation (Optional)</label>
+                                <select id="designation" name="designation">
+                                    <option value="general">General Fund</option>
+                                    <option value="education">Education Program</option>
+                                    <option value="healthcare">Healthcare Services</option>
+                                    <option value="food">Food & Nutrition</option>
+                                    <option value="clothes">Clothing & Essentials</option>
+                                    <option value="activities">Activities & Recreation</option>
+                                    <option value="emergency">Emergency Fund</option>
+                                </select>
+                            </div>
+                            <h3>Your Information</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="firstName">First Name</label>
+                                    <input type="text" id="firstName" name="firstName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Last Name</label>
+                                    <input type="text" id="lastName" name="lastName" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Address</label>
+                                <input type="text" id="address" name="address">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="city">City</label>
+                                    <input type="text" id="city" name="city">
+                                </div>
+                                <div class="form-group">
+                                    <label for="state">State</label>
+                                    <input type="text" id="state" name="state">
+                                </div>
+                                <div class="form-group">
+                                    <label for="zip">ZIP Code</label>
+                                    <input type="text" id="zip" name="zip">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>
+                                    <input type="checkbox" name="anonymous" id="anonymous">
+                                    Make this donation anonymous
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label>
+                                    <input type="checkbox" name="newsletter" id="newsletter" checked>
+                                    Subscribe to our newsletter for updates
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label>
+                                    <input type="checkbox" name="taxReceipt" id="taxReceipt" checked>
+                                    Send tax receipt via email
+                                </label>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-large btn-block">Proceed to Payment</button>
+                            <p class="form-note">🔒 Your donation is secure and tax-deductible. We accept all major credit cards and PayPal.</p>
+                        </form>
+                        <div id="donationSuccess" class="donation-success" style="display: none;">
+                            <div class="success-icon">✓</div>
+                            <h3>Thank You!</h3>
+                            <p>Your donation has been received. You will receive a confirmation email shortly.</p>
+                            <p class="success-amount">Donation Amount: $<span id="successAmount"></span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Other Ways to Give -->
+    <section class="other-ways">
+        <div class="container">
+            <div class="section-header">
+                <h2>Other Ways to Give</h2>
+                <p class="section-subtitle">There are many ways to support Aurora House</p>
+            </div>
+            <div class="ways-grid">
+                <div class="way-card">
+                    <div class="way-icon">🎁</div>
+                    <h3>In-Kind Donations</h3>
+                    <p>Donate items like clothing, books, toys, school supplies, and more</p>
+                    <a href="contact.html" class="btn btn-outline">Learn More</a>
+                </div>
+                <div class="way-card">
+                    <div class="way-icon">👥</div>
+                    <h3>Sponsor a Child</h3>
+                    <p>Provide ongoing support for a specific child's needs and education</p>
+                    <a href="contact.html" class="btn btn-outline">Get Started</a>
+                </div>
+                <div class="way-card">
+                    <div class="way-icon">🎉</div>
+                    <h3>Organize a Fundraiser</h3>
+                    <p>Host an event, start a campaign, or create a birthday fundraiser</p>
+                    <a href="contact.html" class="btn btn-outline">Contact Us</a>
+                </div>
+                <div class="way-card">
+                    <div class="way-icon">💼</div>
+                    <h3>Corporate Partnership</h3>
+                    <p>Partner with us for corporate giving, matching gifts, or sponsorships</p>
+                    <a href="contact.html" class="btn btn-outline">Partner With Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <span class="logo-icon">🌟</span>
+                        <span class="logo-text">Aurora House</span>
+                    </div>
+                    <p>Illuminating lives and creating bright futures for children in need. Together, we can make a difference.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">📘</a>
+                        <a href="#" aria-label="Twitter">🐦</a>
+                        <a href="#" aria-label="Instagram">📷</a>
+                        <a href="#" aria-label="LinkedIn">💼</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="programs.html">Programs</a></li>
+                        <li><a href="adoption.html">Adoption</a></li>
+                        <li><a href="rescue.html">Rescue</a></li>
+                        <li><a href="donate.html">Donate</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Get Involved</h4>
+                    <ul>
+                        <li><a href="rescue.html">Report a Child</a></li>
+                        <li><a href="adoption.html">Adopt a Child</a></li>
+                        <li><a href="donate.html">Make a Donation</a></li>
+                        <li><a href="contact.html">Volunteer</a></li>
+                        <li><a href="contact.html">Sponsor a Child</a></li>
+                        <li><a href="contact.html">Organize Fundraiser</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Info</h4>
+                    <ul class="contact-info">
+                        <li>📍 123 Hope Street, City, State 12345</li>
+                        <li>📞 (555) 123-4567</li>
+                        <li>✉️ info@aurorahouse.org</li>
+                        <li>🕒 Mon-Fri: 9AM - 5PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Aurora House. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="auth.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
